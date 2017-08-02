@@ -114,21 +114,22 @@ def telemetry(sid, data):
             # Create output images to send to server
             out_image_string1, out_image_string2 = create_output_images(Rover)
 
-            # The action step!  Send commands to the rover!
-            commands = (Rover.throttle, Rover.brake, Rover.steer)
-            send_control(commands, out_image_string1, out_image_string2)
- 
+            
             # If in a state where want to pickup a rock send pickup command
             if Rover.send_pickup and not Rover.picking_up:
                 send_pickup()
                 # Reset Rover flags
                 Rover.send_pickup = False
-        # In case of invalid telemetry, send null commands
-        else:
+            # In case of invalid telemetry, send null commands
+            else:
+                # The action step!  Send commands to the rover!
+                commands = (Rover.throttle, Rover.brake, Rover.steer)
+                send_control(commands, out_image_string1, out_image_string2)
 
+               
+        else:
             # Send zeros for throttle, brake and steer and empty images
             send_control((0, 0, 0), '', '')
-
         # If you want to save camera images from autonomous driving specify a path
         # Example: $ python drive_rover.py image_folder_path
         # Conditional to save image frame if folder was specified
