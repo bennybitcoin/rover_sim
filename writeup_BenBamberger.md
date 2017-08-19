@@ -91,7 +91,7 @@ I ran the simulation on a Windows 10 desktop computer 1280x720 with Fantastic gr
 
 I was very succesful in transforming the rover camera image into navigable angles for the rover to drive in. I did however struggle in creating logic to guide the rover towards the target rocks. I attempted to create a new mode called "tracking" (I commented the code out in my submission) in order to slow the rover and guide it towards the rocks. I had many complications where the rover would simply stop and spin and was unable to teach it to pick up rocks. I will keep working towards a more effective solution in the weeks to come, I found it to be an interesting challenge.
 
-
+Video file is in the main github directory and is named rover_sim.webm
 
 
 
