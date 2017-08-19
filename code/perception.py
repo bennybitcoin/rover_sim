@@ -139,11 +139,15 @@ def perception_step(Rover):
     # 8) Convert rover-centric pixel positions to polar coordinates
     #check for target rocks
     # Update Rover pixel distances and angles
-    if (np.sum(Rover.worldmap[:,:,1] > 10)):
-        Rover.nav_dists, Rover.nav_angles = to_polar_coords(xpixT, ypixT)
-        Rover.mode = 'track'
-    else:
-        Rover.nav_dists, Rover.nav_angles = to_polar_coords(xpixG, ypixG)
+
+    
+    # REMOVED THIS BECAUSE ROCK TRACKING WAS UNSUCCESSFUL
+    # if (np.sum(Rover.worldmap[:,:,1] > 10)):
+    #     Rover.nav_dists, Rover.nav_angles = to_polar_coords(xpixT, ypixT)
+    #     Rover.mode = 'track'
+    # else:
+        
+    Rover.nav_dists, Rover.nav_angles = to_polar_coords(xpixG, ypixG)
 
 
 

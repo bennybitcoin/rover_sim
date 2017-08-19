@@ -61,35 +61,35 @@ def decision_step(Rover):
                     Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -15, 15)
                     Rover.mode = 'forward'
 
-            # Find and retrieve rock mode
-        elif Rover.mode == 'track':
-                print('*********tracking********')
-                print(len(Rover.nav_angles))
-                # If we're in stop mode but still moving keep braking
-                if Rover.vel > 0.5:
-                    Rover.throttle = 0.2
-                    Rover.brake = Rover.brake_set/2
-                    Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -15, 15)
+            # Find and retrieve rock mode (I WAS UNSUCESSFUL WITH THIS TRACKING CODE)
+        # elif Rover.mode == 'track':
+        #         print('*********tracking********')
+        #         print(len(Rover.nav_angles))
+        #         # If we're in stop mode but still moving keep braking
+        #         if Rover.vel > 0.5:
+        #             Rover.throttle = 0.2
+        #             Rover.brake = Rover.brake_set/2
+        #             Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -15, 15)
 
-                # If we're not moving (vel < 0.2) then do something else
-                elif Rover.vel <= 0.5:
+        #         # If we're not moving (vel < 0.2) then do something else
+        #         elif Rover.vel <= 0.5:
 
-                    # Now we're slow and adjust course
-                    if len(Rover.nav_angles) < (Rover.go_forward/50):
-                        Rover.throttle = 0
-                        # Release the brake to allow turning
-                        Rover.brake = 0
-                        # Turn range is +/- 15 degrees, when stopped the next line will induce 4-wheel turning
-                        Rover.steer = -15 # Could be more clever here about which way to turn
-                    # If we're stopped but see sufficient navigable terrain in front then go!
-                    if len(Rover.nav_angles) >= (Rover.go_forward/50):
-                        # Set throttle back to stored value
-                        Rover.throttle = Rover.throttle_set
-                        # Release the brake
-                        Rover.brake = 0
-                        # Set steer to mean angle
+        #             # Now we're slow and adjust course
+        #             if len(Rover.nav_angles) < (Rover.go_forward/50):
+        #                 Rover.throttle = 0
+        #                 # Release the brake to allow turning
+        #                 Rover.brake = 0
+        #                 # Turn range is +/- 15 degrees, when stopped the next line will induce 4-wheel turning
+        #                 Rover.steer = -15 # Could be more clever here about which way to turn
+        #             # If we're stopped but see sufficient navigable terrain in front then go!
+        #             if len(Rover.nav_angles) >= (Rover.go_forward/50):
+        #                 # Set throttle back to stored value
+        #                 Rover.throttle = Rover.throttle_set
+        #                 # Release the brake
+        #                 Rover.brake = 0
+        #                 # Set steer to mean angle
 
-                        Rover.mode = 'forward'
+        #                 Rover.mode = 'forward'
     # Just to make the rover do something
     # even if no modifications have been made to the code
     else:
