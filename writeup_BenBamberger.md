@@ -72,15 +72,15 @@ into a "satellite" view:
 
 ![alt text][image3]
 
-Then I combined the thresholding into the warped perspective to create navigation angles:
+Then I combined the thresholding into the warped perspective to create the following:
 
 ![alt text][image4]
 
-and then converted them to rover centric angles:
+and then converted them to rover centric angles: (rover_coords)
 
 ![alt text][image5]
 
-and finalled mapped the findings to the world map:
+and mapped the findings to the world map:(pix_to_world)
 
 ![alt text][image6]
 
